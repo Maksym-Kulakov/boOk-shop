@@ -1,7 +1,5 @@
 package com.shop.book.controller;
 
-import com.shop.book.model.dto.AuthorRequestDto;
-import com.shop.book.model.dto.AuthorResponseDto;
 import com.shop.book.model.dto.BookRequestDto;
 import com.shop.book.model.dto.BookResponseDto;
 import com.shop.book.model.dto.mapper.impl.BookMapper;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
