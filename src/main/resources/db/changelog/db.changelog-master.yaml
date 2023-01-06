@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: /db/changelog/changes/create-author-table.sql
+  - include:
+      file: /db/changelog/changes/create-book-table.sql
+  - include:
+      file: /db/changelog/changes/create-book-author-table.sql
+  - include:
+      file: /db/changelog/changes/add-authors.sql
