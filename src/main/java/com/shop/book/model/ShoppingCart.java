@@ -22,7 +22,7 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany
-    private List<Order> orders;
+    private List<Book> books;
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
