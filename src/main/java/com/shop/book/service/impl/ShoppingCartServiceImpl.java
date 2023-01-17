@@ -1,5 +1,6 @@
 package com.shop.book.service.impl;
 
+import com.shop.book.model.Book;
 import com.shop.book.model.ShoppingCart;
 import com.shop.book.model.User;
 import com.shop.book.repository.ShoppingCartRepository;
@@ -25,6 +26,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public void registerNewShoppingCart(User user) {
         ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUser(user);
+        shoppingCartRepository.save(shoppingCart);
         user.setShoppingCart(shoppingCart);
         userRepository.save(user);
     }
@@ -36,8 +39,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public void addBooksToCart(ShoppingCart shoppingCart) {
-        shoppingCart.getBooks().clear();
+    public void addBooksToCart(Book book, User user) {
+        ShoppingCart shoppingCart = shoppingCartRepository.findByUser(user);
+        shoppingCart.getBooks().add(book);
         shoppingCartRepository.save(shoppingCart);
     }
 }

@@ -1,7 +1,7 @@
 package com.shop.book.controller;
 
-import com.shop.book.model.dto.BookRequestDto;
-import com.shop.book.model.dto.BookResponseDto;
+import com.shop.book.model.dto.book.BookRequestDto;
+import com.shop.book.model.dto.book.BookResponseDto;
 import com.shop.book.model.dto.mapper.impl.BookMapper;
 import com.shop.book.service.BookService;
 import org.springframework.http.HttpStatus;

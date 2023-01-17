@@ -1,5 +1,6 @@
 package com.shop.book.service;
 
+import com.shop.book.model.Book;
 import com.shop.book.model.ShoppingCart;
 import com.shop.book.model.User;
 
@@ -10,5 +11,5 @@ public interface ShoppingCartService {
 
     void clear(ShoppingCart shoppingCart);
 
-    void addBooksToCart(ShoppingCart shoppingCart);
+    void addBooksToCart(Book book, User user);
 }

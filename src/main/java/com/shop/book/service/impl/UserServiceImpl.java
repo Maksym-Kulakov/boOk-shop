@@ -1,4 +1,23 @@
 package com.shop.book.service.impl;
 
-public class UserServiceImpl {
+import com.shop.book.model.User;
+import com.shop.book.repository.UserRepository;
+import com.shop.book.service.UserService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService {
+    private final UserRepository userRepository;
+
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User getByEmail(String email) {
+        return userRepository.getByEmail(email);
+    }
+
+    public User create(User user) {
+        return userRepository.save(user);
+    }
 }

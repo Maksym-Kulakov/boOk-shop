@@ -23,3 +23,15 @@ databaseChangeLog:
       file: /db/changelog/changes/create-user-role-table.sql
   - include:
       file: /db/changelog/changes/add-authors.sql
+  - include:
+      file: /db/changelog/changes/add-books.sql
+  - include:
+      file: /db/changelog/changes/add-books_authors.sql
+  - include:
+      file: /db/changelog/changes/add-users.sql
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-package com.shop.book.model.dto;
+package com.shop.book.model.dto.author;
 
 import lombok.Data;
 

@@ -1,7 +1,7 @@
 package com.shop.book.controller;
 
-import com.shop.book.model.dto.AuthorRequestDto;
-import com.shop.book.model.dto.AuthorResponseDto;
+import com.shop.book.model.dto.author.AuthorRequestDto;
+import com.shop.book.model.dto.author.AuthorResponseDto;
 import com.shop.book.model.dto.mapper.impl.AuthorMapper;
 import com.shop.book.service.AuthorService;
 import org.springframework.http.HttpStatus;
