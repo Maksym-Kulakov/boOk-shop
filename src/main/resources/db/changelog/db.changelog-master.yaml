@@ -29,7 +29,10 @@ databaseChangeLog:
       file: /db/changelog/changes/add-books_authors.sql
   - include:
       file: /db/changelog/changes/add-users.sql
-
+  - include:
+      file: /db/changelog/changes/add-roles.sql
+  - include:
+      file: /db/changelog/changes/add-users-roles.sql
 
 
 

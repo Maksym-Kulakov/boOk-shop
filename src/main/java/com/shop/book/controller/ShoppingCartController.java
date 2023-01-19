@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/shopping_carts")
@@ -37,15 +38,13 @@ public class ShoppingCartController {
     public void create(@PathVariable Long bookId,
                        @RequestParam String email) {
         Book book = bookService.get(bookId);
-        User user = userService.getByEmail(email);
+        User user = userService.getByEmail(email).get();
         cartService.addBooksToCart(book, user);
     }
 
     @GetMapping("/reg")
     public void register(@RequestParam String email) {
-        User user = userService.getByEmail(email);
+        User user = userService.getByEmail(email).get();
         cartService.registerNewShoppingCart(user);
     }
-
-
 }
