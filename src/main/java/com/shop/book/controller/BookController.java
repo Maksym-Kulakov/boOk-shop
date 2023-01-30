@@ -4,20 +4,20 @@ import com.shop.book.model.dto.book.BookRequestDto;
 import com.shop.book.model.dto.book.BookResponseDto;
 import com.shop.book.model.dto.mapper.impl.BookMapper;
 import com.shop.book.service.BookService;
+import com.shop.book.util.PaginationUtil;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
+
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -44,9 +44,6 @@ public class BookController {
 
     @GetMapping
     public ResponseEntity<List<BookResponseDto>> getAll(Authentication authentication) {
-        System.out.println(authentication.getName());
-        System.out.println(RequestContextHolder.currentRequestAttributes().getSessionId());
-
         return ResponseEntity.ok(bookService.getAll()
                 .stream()
                 .map(bookMapper::toDto)
@@ -67,4 +64,29 @@ public class BookController {
         return ResponseEntity.ok("Success, deleted book by id " + id);
     }
 
+    @GetMapping("/byPrice")
+    @ApiOperation(value = "to get all Products from DB between min "
+            + "and max PRICE value with sorting & pagination ability")
+    public List<BookResponseDto> getByPrice(@RequestParam(defaultValue = "3")
+                                            Integer count,
+                                            @RequestParam(defaultValue = "0")
+                                            Integer page,
+                                            @RequestParam(defaultValue = "0.00")
+                                            BigDecimal from,
+                                            @RequestParam(defaultValue = "10000.00")
+                                            BigDecimal to,
+                                            @RequestParam(defaultValue = "id")
+                                            String sortBy) {
+        PageRequest pageRequest = PaginationUtil.getPageRequest(page, count, sortBy);
+        return bookService.getBooksByPriceBetween(pageRequest, from, to)
+                .stream().map(bookMapper::toDto).toList();
+    }
+
+    @GetMapping("/crit")
+    public List<BookResponseDto> findAllByCriteria(@RequestParam Map<String, String> params) {
+        return bookService.findAllByCriteria(params)
+                .stream()
+                .map(bookMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }

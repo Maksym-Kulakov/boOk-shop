@@ -3,10 +3,12 @@ package com.shop.book.model.dto.user;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.shop.book.util.Email;
 import com.shop.book.util.Phone;
+import lombok.Data;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+@Data
 public class UserSignUpDto {
     @NotBlank(message = "First name is mandatory")
     @Size(min = 3, message = "First name should have at least 3 characters")

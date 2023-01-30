@@ -23,12 +23,13 @@ import java.util.Objects;
 public class Book extends Product {
     private String title;
     @ManyToMany
+ /*   @JoinTable(name = "books_authors",
+            joinColumns = @JoinColumn(name = "book_id",
+                    referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "authors_id",
+                    referencedColumnName = "id"))*/
+
     private List<Author> authors;
-    @JoinTable(name = "books_authors",
-    joinColumns = @JoinColumn(name = "book_id",
-            referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "authors_id",
-            referencedColumnName = "id"))
     @Enumerated(value = EnumType.STRING)
     @Column(name = "genre")
     private Genre genre;

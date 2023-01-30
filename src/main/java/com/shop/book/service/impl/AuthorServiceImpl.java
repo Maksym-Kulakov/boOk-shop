@@ -1,16 +1,16 @@
 package com.shop.book.service.impl;
 
 import com.shop.book.model.Author;
-import com.shop.book.repository.AuthorRepository;
+import com.shop.book.repository.AuthorsRepository;
 import com.shop.book.service.AuthorService;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
-    private AuthorRepository authorRepository;
+    private AuthorsRepository authorRepository;
 
-    public AuthorServiceImpl(AuthorRepository authorRepository) {
+    public AuthorServiceImpl(AuthorsRepository authorRepository) {
         this.authorRepository = authorRepository;
     }
 

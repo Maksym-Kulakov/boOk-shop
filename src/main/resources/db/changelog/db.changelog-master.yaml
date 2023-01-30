@@ -33,8 +33,9 @@ databaseChangeLog:
       file: /db/changelog/changes/add-roles.sql
   - include:
       file: /db/changelog/changes/add-users-roles.sql
-
-
-
-
-
+  - include:
+      file: /db/changelog/changes/add-books-2.sql
+  - include:
+      file: /db/changelog/changes/add-authors2.sql
+  - include:
+      file: /db/changelog/changes/add-books_authors-2.sql

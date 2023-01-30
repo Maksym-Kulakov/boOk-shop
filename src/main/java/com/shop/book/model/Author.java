@@ -1,5 +1,6 @@
 package com.shop.book.model;
 
+import jdk.jfr.Name;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
@@ -10,8 +11,8 @@ import javax.persistence.Table;
 
 @Data
 @NoArgsConstructor
-@Entity
 @Table(name = "authors")
+@Entity
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
